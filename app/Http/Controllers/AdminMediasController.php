@@ -22,13 +22,19 @@ class AdminMediasController extends Controller
 
     public function store(Request $request){
 
-        // superglobal file in laravel
         $file = $request->file('file');
-
         $name = time() . $file->getClientOriginalName();
         $file->move('images', $name);
-        Photo::create(['file'=>$name]);
-        
 
+        Photo::create(['file'=>$name]);
+    }
+
+    public function destroy($id){
+
+        $photo = Photo::findOrFail($id);
+        unlink(public_path() . $photo->file);
+        $photo->delete();
+
+        return redirect('admin/media');
     }
 }
