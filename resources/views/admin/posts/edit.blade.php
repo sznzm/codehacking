@@ -12,7 +12,7 @@
 
     <div class="col-sm-6">
 
-        <img class="img-responsive" src="{{$post_photo->file}}" alt="">
+        <img class="img-responsive" src="{{$post->photo->file}}" alt="">
 
     </div>
 
